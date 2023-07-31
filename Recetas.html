@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/1/recetas.css">
+  <title>Recetas</title>
+</head>
+<body>
+  <div>
+    <img class="imagen1" src="/1/recetas.jpg" alt="Recetas">
+  </div>
+  <div >
+    <img class="imagen2" src="/1/recetas_1.jpg" alt="Recetas">
+  </div>
+  <div class="container">
+    <div class="header">
+      <h1>Recetas</h1>
+    </div>
+    <div class="notes">
+      <div class="note">
+        <textarea type="text" id="newNote" placeholder="Escribe tu nota aquí..."></textarea>
+      </div>
+    </div>
+    <div class="footer">
+      <button class="add-button" onclick="agregarNota()">Agregar Receta</button>
+      <button class="save-button" onclick="guardarNotas()">Guardar</button>
+      <ul id="recetas"></ul>
+    </div>
+  </div>
+</body>
+<script src="/1/recetas.js"></script>
+</html>
