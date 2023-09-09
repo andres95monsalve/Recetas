@@ -4,7 +4,7 @@ window.onload = function() {
   cargarRecetas();
 };
 
-function agregarReceta() {
+function agregarNota() {
   const nota = document.getElementById('newNote').value;
   if (nota.trim() !== '') {
     recetas.push(nota);
@@ -20,39 +20,43 @@ function cargarRecetas() {
   recetas.forEach((nota, index) => {
     const li = document.createElement('li');
     li.textContent = nota;
-    li.innerHTML += `&nbsp;&nbsp;&nbsp;<button class="boton_lista" onclick="editarReceta(${index})">Editar</button>&nbsp;&nbsp;<button class="boton_lista" onclick="eliminarReceta(${index})">Eliminar</button>`;
+    li.innerHTML += `&nbsp;&nbsp;&nbsp;<button class="boton_lista" onclick="editarNota(${index})">Editar</button>&nbsp;&nbsp;<button class="boton_lista" onclick="eliminarNota(${index})">Eliminar</button>`;
     recetasList.appendChild(li);
   });
 }
 
-function editarReceta(index) {
-  const nuevaReceta = prompt('Editar Receta:', recetas[index]);
-  if (nuevaReceta !== null) {
-    recetas[index] = nuevaReceta;
+function editarNota(index) {
+  const nuevaNota = prompt('Editar nota:', recetas[index]);
+  if (nuevaNota !== null) {
+    recetas[index] = nuevaNota;
     guardarRecetas();
     cargarRecetas();
   }
 }
 
-function eliminarReceta(index) {
+function eliminarNota(index) {
   recetas.splice(index, 1);
   guardarRecetas();
   cargarRecetas();
 }
 
 function guardarRecetas() {
+
+}
+
+function guardarNotas() {
   if (recetas.length > 0) {
     const content = generateDocxContent(recetas);
     const blob = new Blob([content], { type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' });
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = 'recetas.docx';
+    link.download = 'notas_recetas.docx';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
   } else {
-    alert('No hay receta para guardar.');
+    alert('No hay notas para guardar.');
   }
 }
 
